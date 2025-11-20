@@ -25,15 +25,15 @@ jobs:
         uses: docker/login-action@v2
         with:
           registry: waleecontainers.azurecr.io/
-          username: ${{ secrets.AZUREAPPSERVICE_CONTAINERUSERNAME_22020450B05840E08DA3C7E497A75CD3 }}
-          password: ${{ secrets.AZUREAPPSERVICE_CONTAINERPASSWORD_977FB1551E9545DE8CC268A4D9AA61BD }}
+          username: ${{ secrets.AZUREAPPSERVICE_CONTAINERUSERNAME_CB868266E5DF4DB6855B333256BA65CC }}
+          password: ${{ secrets.AZUREAPPSERVICE_CONTAINERPASSWORD_FE158183BFF04F62A8D0717E6FC091F4 }}
 
       - name: Build and push container image to registry
         uses: docker/build-push-action@v3
         with:
           context: .
           push: true
-          tags: waleecontainers.azurecr.io/${{ secrets.AZUREAPPSERVICE_CONTAINERUSERNAME_22020450B05840E08DA3C7E497A75CD3 }}/uillm/anythingllm:latest:${{ github.sha }}
+          tags: waleecontainers.azurecr.io/${{ secrets.AZUREAPPSERVICE_CONTAINERUSERNAME_CB868266E5DF4DB6855B333256BA65CC }}/uillm/anythingllm:latest:${{ github.sha }}
           file: ./Dockerfile
 
   deploy:
@@ -49,5 +49,5 @@ jobs:
         with:
           app-name: 'ecophon-llm'
           slot-name: 'Production'
-          images: 'waleecontainers.azurecr.io/${{ secrets.AZUREAPPSERVICE_CONTAINERUSERNAME_22020450B05840E08DA3C7E497A75CD3 }}/uillm/anythingllm:latest:${{ github.sha }}'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_9672098A6F744194AFDD9F19D2BDBD66 }}
+          images: 'waleecontainers.azurecr.io/${{ secrets.AZUREAPPSERVICE_CONTAINERUSERNAME_CB868266E5DF4DB6855B333256BA65CC }}/uillm/anythingllm:latest:${{ github.sha }}'
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_65C1B514C9504973AD39E5DAC0A3C9EC }}
