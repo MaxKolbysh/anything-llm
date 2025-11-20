@@ -34,7 +34,7 @@ jobs:
           context: .
           push: true
           tags: waleecontainers.azurecr.io/${{ secrets.AZUREAPPSERVICE_CONTAINERUSERNAME_424C50A33BFF4AF9BBEB1B5EE6DC7DD7 }}/uillm/anythingllm:${{ github.sha }}
-          file: ./Dockerfile
+          file: ./docker/Dockerfile
 
   deploy:
     runs-on: ubuntu-latest
@@ -50,4 +50,5 @@ jobs:
           app-name: 'ecophon-llm'
           slot-name: 'Production'
           images: 'waleecontainers.azurecr.io/${{ secrets.AZUREAPPSERVICE_CONTAINERUSERNAME_424C50A33BFF4AF9BBEB1B5EE6DC7DD7 }}/uillm/anythingllm:${{ github.sha }}'
+
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D14DB49467604D4A98725494ADBD540B }}
